@@ -9,12 +9,28 @@ var server = http.createServer(function(request, response) {
   var property = endpoint.replace(/^\//, '');
 
   if (request.method === 'POST') {
-    // YOUR CODE HERE
+
+    //increment the globalCounter if POST is create
+
+    if(globalCounter[property]){
+      globalCounter[property]++;
+      response.end();
+      //Set globalCounter equal to 1 if there is not POST request
+    }else{
+      globalCounter[property] = 1;
+      response.end();
+    }
+    console.log(globalCounter[property])
   } else if (request.method === 'GET') {
-    // YOUR CODE HERE
+
+     // if GET request is send
+    if(globalCounter[property]){
+        //return response using JSON
+      response.end(JSON.stringify(globalCounter[property]))
+    }
   } else {
-    response.statusCode = 404;
-    response.end();
+       //if not return ERROR message
+    response.end("ERROR");
   }
 });
 
