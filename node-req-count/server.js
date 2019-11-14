@@ -25,7 +25,7 @@ var server = http.createServer(function(request, response) {
 
      // if GET request is send
     if(globalCounter[property]){
-        //return response using JSON
+        //return response using JSON method
       response.end(JSON.stringify(globalCounter[property]))
     }
   } else {
